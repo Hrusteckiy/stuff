@@ -20,6 +20,12 @@ IC	ALife::_TIME_ID	CALifeTimeManager::start_game_time		() const
 	return						m_start_game_time;
 }
 
+IC	void			CALifeTimeManager::set_game_time(ALife::_TIME_ID new_time)
+{
+	m_game_time = new_time;
+	m_start_time = Device.dwTimeGlobal;
+};
+
 IC	ALife::_TIME_ID	CALifeTimeManager::game_time			() const
 {
 	return						(m_game_time + ALife::_TIME_ID(m_time_factor*float(Device.dwTimeGlobal - m_start_time)));

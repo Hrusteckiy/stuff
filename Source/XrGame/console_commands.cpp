@@ -188,6 +188,18 @@ static void full_memory_stats	( )
 #endif // DEBUG
 }
 
+class CCC_SetGameTime : public IConsole_Command {
+public:
+	CCC_SetGameTime(LPCSTR N) : IConsole_Command(N) {};
+	virtual void	Execute(LPCSTR args)
+	{
+		u32 hours = 0, mins = 0;
+
+		sscanf(args, "%d:%d", &hours, &mins);
+		Level().SetGameTime(hours, mins);
+	}
+};
+
 class CCC_MemStats : public IConsole_Command
 {
 public:
@@ -1187,7 +1199,7 @@ public:
 */
 #endif
 
-#ifndef MASTER_GOLD
+
 #	include "game_graph.h"
 struct CCC_JumpToLevel : public IConsole_Command {
 	CCC_JumpToLevel(LPCSTR N) : IConsole_Command(N)  {};
@@ -1230,7 +1242,7 @@ struct CCC_JumpToLevel : public IConsole_Command {
 
 };
 
-//#ifndef MASTER_GOLD
+
 class CCC_Script : public IConsole_Command {
 public:
 	CCC_Script(LPCSTR N) : IConsole_Command(N)  { bEmptyArgsHandled = false; };
@@ -1342,7 +1354,7 @@ public:
 	}
 };
 
-#endif // MASTER_GOLD
+
 
 #include "GamePersistent.h"
 
@@ -1836,16 +1848,15 @@ void CCC_RegisterCommands()
 	CMD3(CCC_Mask,				"hud_crosshair",		&psHUD_Flags,	HUD_CROSSHAIR);
 	CMD3(CCC_Mask,				"hud_crosshair_dist",	&psHUD_Flags,	HUD_CROSSHAIR_DIST);
 
-#ifdef DEBUG
-	CMD4(CCC_Float,				"hud_fov",				&psHUD_FOV,		0.1f,	1.0f);
-	CMD4(CCC_Float,				"fov",					&g_fov,			5.0f,	180.0f);
-#endif // DEBUG
-
 	// Demo
 #if 1//ndef MASTER_GOLD
 	CMD1(CCC_DemoPlay,			"demo_play"				);
 	CMD1(CCC_DemoRecord,		"demo_record"			);
 	CMD1(CCC_DemoRecordSetPos,	"demo_set_cam_position"	);
+	CMD4(CCC_Float, "hud_fov", &psHUD_FOV, 0.1f, 1.0f);
+	CMD4(CCC_Float, "fov", &g_fov, 5.0f, 180.0f);
+	CMD1(CCC_TimeFactor,	"time_factor");	
+	CMD1(CCC_SetGameTime, "set_game_time");
 #endif // #ifndef MASTER_GOLD
 	
 #ifndef MASTER_GOLD
@@ -1982,7 +1993,6 @@ CMD4(CCC_Integer,			"hit_anims_tune",						&tune_hit_anims,		0, 1);
 	CMD3(CCC_Mask,			"g_unlimitedammo",	&psActorFlags,	AF_UNLIMITEDAMMO);
 	CMD1(CCC_Script,		"run_script");
 	CMD1(CCC_ScriptCommand,	"run_string");
-	CMD1(CCC_TimeFactor,	"time_factor");		
 #endif // MASTER_GOLD
 
 	CMD3(CCC_Mask,		"g_autopickup",			&psActorFlags,	AF_AUTOPICKUP);

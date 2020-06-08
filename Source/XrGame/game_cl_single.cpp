@@ -70,7 +70,7 @@ float game_cl_Single::GetGameTimeFactor		()
 		return(inherited::GetGameTimeFactor());
 }
 
-void game_cl_Single::SetGameTimeFactor(const float fTimeFactor)
+void game_cl_Single::SetGameTimeFactor(u64 new_time, const float fTimeFactor)
 {
 	Level().Server->game->SetGameTimeFactor(fTimeFactor);
 }
@@ -91,7 +91,7 @@ float game_cl_Single::GetEnvironmentGameTimeFactor		()
 		return	(inherited::GetEnvironmentGameTimeFactor());
 }
 
-void game_cl_Single::SetEnvironmentGameTimeFactor		(const float fTimeFactor)
+void game_cl_Single::SetEnvironmentGameTimeFactor		(u64 new_time, const float fTimeFactor)
 {
 	if (ai().get_alife() && ai().alife().initialized())
 		Level().Server->game->SetGameTimeFactor(fTimeFactor);
