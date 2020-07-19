@@ -1722,6 +1722,7 @@
     <ClInclude Include="ui\UIListItemServer.h" />
     <ClInclude Include="ui\UILogsWnd.h" />
     <ClInclude Include="ui\UIMainIngameWnd.h" />
+    <ClInclude Include="ui\UIArtefactPanel.h" />
     <ClInclude Include="ui\UIMap.h" />
     <ClInclude Include="ui\UIMapDesc.h" />
     <ClInclude Include="ui\UIMapInfo.h" />
@@ -5694,6 +5695,7 @@
     <ClCompile Include="ui\UIListItemServer.cpp" />
     <ClCompile Include="ui\UILogsWnd.cpp" />
     <ClCompile Include="ui\UIMainIngameWnd.cpp" />
+    <ClCompile Include="ui\UIArtefactPanel.cpp" />
     <ClCompile Include="ui\UIMap.cpp" />
     <ClCompile Include="ui\UIMapDesc.cpp" />
     <ClCompile Include="ui\UIMapInfo.cpp" />

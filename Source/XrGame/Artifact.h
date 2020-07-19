@@ -2,7 +2,8 @@
 
 #include "hud_item_object.h"
 #include "hit_immunity.h"
-#include "PHObject.h"
+#include "../XrPhysics/PHObject.h"
+#include "../XrPhysics/PHUpdateObject.h"
 #include "script_export_space.h"
 #include "patrol_path.h"
 

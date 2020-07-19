@@ -37,6 +37,7 @@
 #include "UIPdaMsgListItem.h"
 #include "UIPdaWnd.h"
 #include "../alife_registry_wrappers.h"
+#include "UIArtefactPanel.h"
 
 #include "../string_table.h"
 
@@ -77,7 +78,7 @@ const u32	g_clWhite					= 0xffffffff;
 #define				MAININGAME_XML				"maingame.xml"
 
 CUIMainIngameWnd::CUIMainIngameWnd()
-:/*m_pGrenade(NULL),m_pItem(NULL),*/m_pPickUpItem(NULL),m_pMPChatWnd(NULL),UIArtefactIcon(NULL),m_pMPLogWnd(NULL)
+:/*m_pGrenade(NULL),m_pItem(NULL),*/m_pPickUpItem(NULL),m_pMPChatWnd(NULL),UIArtefactIcon(NULL),m_pMPLogWnd(NULL),UIArtefactPanel(NULL)
 {
 	UIZoneMap					= xr_new<CUIZoneMap>();
 }
@@ -94,6 +95,7 @@ CUIMainIngameWnd::~CUIMainIngameWnd()
 	xr_delete					(UIWeaponJammedIcon);
 	xr_delete					(UIInvincibleIcon);
 	xr_delete					(UIArtefactIcon);
+	xr_delete					(UIArtefactPanel);
 }
 
 void CUIMainIngameWnd::Init()
@@ -239,6 +241,13 @@ void CUIMainIngameWnd::Init()
 	UIMotionIcon->Init						(UIZoneMap->MapFrame().GetWndRect());
 
 	UIStaticDiskIO							= UIHelper::CreateStatic(uiXml, "disk_io", this);
+	if (IsGameTypeSingle() && uiXml.NavigateToNode("artefact_panel", 0))
+	{
+		UIArtefactPanel = xr_new<CUIArtefactPanel>();
+		UIArtefactPanel->InitFromXML(uiXml, "artefact_panel", 0);
+		this->AttachChild(UIArtefactPanel);
+	}
+
 
 	m_ui_hud_states							= xr_new<CUIHudStatesWnd>();
 	m_ui_hud_states->SetAutoDelete			(true);
