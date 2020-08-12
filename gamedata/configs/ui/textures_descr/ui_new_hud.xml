@@ -1,7 +1,7 @@
 <w>
     <file name="ui\ui_new_hud">
 	<texture id="ui_border" x="3" y="50" width="362" height="40" />
-	<texture id="ui_hp_bar" x="3" y="4" width="138" height="16" />
+	<texture id="ui_hp_bar" x="3" y="4" width="140" height="16" />
     <texture id="ui_stamina_bar" x="3" y="26" width="138" height="10" />
 	<!--<texture id="ui_stamina_bar" x="3" y="38" width="364" height="10" />-->
 	<texture id="ui_hud_shkala_armor" x="1" y="1" width="1" height="1" />

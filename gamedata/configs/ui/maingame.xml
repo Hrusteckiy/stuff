@@ -186,7 +186,7 @@
 		
 
 		<!--original thing		<progress_bar_health x="852" y="649" width="138" height="16" horz="1" min="0" max="100" pos="0">--> 
-<progress_bar_health x="320" y="644" width="142" height="16" horz="1" min="0" max="100" pos="0">
+<progress_bar_health x="320" y="644" width="140" height="16" horz="1" min="0" max="100" pos="0">
 			<progress><!-- light_anim="ui_blinking_1" la_cyclic="0" la_texture="1" la_text="0" la_alpha="1"-->
 <!--original thing					<texture>ui_inGame2_Patroni_HUD_red_bar</texture>-->
 <texture>ui_hp_bar</texture>
