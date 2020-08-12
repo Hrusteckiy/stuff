@@ -241,6 +241,21 @@ void CUIMainIngameWnd::Init()
 	UIMotionIcon->Init						(UIZoneMap->MapFrame().GetWndRect());
 
 	UIStaticDiskIO							= UIHelper::CreateStatic(uiXml, "disk_io", this);
+
+	
+	for (int i = 0; i < 4; i++)
+	{
+		m_bordericon.push_back(xr_new<CUIStatic>());
+		m_bordericon.back()->SetAutoDelete(true);
+		AttachChild(m_bordericon.back());
+		string32 path;
+		xr_sprintf(path, "border", i);
+		CUIXmlInit::InitStatic(uiXml, path, 0, m_bordericon.back());
+		xr_sprintf(path, "%s:counter", path);
+		UIHelper::CreateStatic(uiXml, path, m_bordericon.back());
+	}
+	m_border				        = UIHelper::CreateTextWnd(uiXml, "border", this);
+	
 	if (IsGameTypeSingle() && uiXml.NavigateToNode("artefact_panel", 0))
 	{
 		UIArtefactPanel = xr_new<CUIArtefactPanel>();
