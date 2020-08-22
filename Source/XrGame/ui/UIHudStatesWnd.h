@@ -24,7 +24,7 @@ private:
 	CUIStatic*			m_back;
 //	CUIStatic*			m_back_v;
 //	CUIStatic*			m_back_over_arrow;
-//	CUIStatic*			m_static_armor;
+	CUIStatic*			m_static_armor;
 
 //	CUIStatic*			m_resist_back[it_max];
 	CUIStatic*			m_indik[it_max];
@@ -37,11 +37,13 @@ private:
 	II_BriefInfo		m_item_info;
 	
 	CUIStatic*			m_ui_weapon_icon;
+	CUIStatic*			m_ui_panel_1;
 	Frect				m_ui_weapon_icon_rect;
 
 	CUIProgressBar*		m_ui_health_bar;
-//	CUIProgressBar*		m_ui_armor_bar;
+	CUIProgressBar*		m_ui_armor_bar;
 	CUIProgressBar*		m_ui_stamina_bar;
+	CUIProgressBar*     m_ui_satiety_bar;
 
 //	CUIProgressShape*	m_progress_self;
 	CUIStatic*			m_radia_damage;
@@ -58,6 +60,9 @@ private:
 */
 	float				m_last_health;
 	float				m_health_blink;
+
+	float				m_last_satiety;
+	float				m_satiety_blink;
 
 	float				m_radia_self;
 //	float				m_actor_radia_factor;

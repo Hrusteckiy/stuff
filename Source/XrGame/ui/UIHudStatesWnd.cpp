@@ -25,6 +25,7 @@ CUIHudStatesWnd::CUIHudStatesWnd()
 :m_b_force_update(true),
 	m_timer_1sec(0),
 	m_last_health(0.0f),
+	m_last_satiety(0.0f),
 	m_radia_self(0.0f),
 	m_radia_hit(0.0f)
 {
@@ -45,6 +46,9 @@ CUIHudStatesWnd::CUIHudStatesWnd()
 	
 	m_health_blink = pSettings->r_float( "actor_condition", "hud_health_blink" );
 	clamp( m_health_blink, 0.0f, 1.0f );
+
+	m_satiety_blink = pSettings->r_float("actor_condition", "hud_satiety_blink");
+	clamp( m_satiety_blink, 0.0f, 1.0f);
 
 	m_fake_indicators_update = false;
 //-	Load_section();
@@ -98,9 +102,12 @@ void CUIHudStatesWnd::InitFromXml( CUIXml& xml, LPCSTR path )
 
 	m_back            = UIHelper::CreateStatic( xml, "back", this );
 	m_ui_health_bar   = UIHelper::CreateProgressBar( xml, "progress_bar_health", this );
+	m_ui_armor_bar    = UIHelper::CreateProgressBar( xml, "progress_bar_armor", this );
 	m_ui_stamina_bar  = UIHelper::CreateProgressBar( xml, "progress_bar_stamina", this );
 //	m_back_v          = UIHelper::CreateStatic( xml, "back_v", this );
-//	m_static_armor    = UIHelper::CreateStatic( xml, "static_armor", this );
+	m_static_armor    = UIHelper::CreateStatic( xml, "static_armor", this );
+	m_ui_panel_1      = UIHelper::CreateStatic( xml, "panel_1", this );
+	m_ui_satiety_bar  = UIHelper::CreateProgressBar(xml, "progress_bar_satiety", this);
 	
 /*
 	m_resist_back[ALife::infl_rad]  = UIHelper::CreateStatic( xml, "resist_back_rad", this );
@@ -122,12 +129,12 @@ void CUIHudStatesWnd::InitFromXml( CUIXml& xml, LPCSTR path )
 	m_fire_mode					= UIHelper::CreateTextWnd( xml, "static_fire_mode", this );
 	m_ui_grenade				= UIHelper::CreateTextWnd( xml, "static_grenade", this );
 	
+	m_ui_panel_1				= UIHelper::CreateStatic( xml, "panel_1", this );
 	m_ui_weapon_icon			= UIHelper::CreateStatic( xml, "static_wpn_icon", this );
 	m_ui_weapon_icon->SetShader( InventoryUtilities::GetEquipmentIconsShader() );
-//	m_ui_weapon_icon->Enable	( false );
+	m_ui_weapon_icon->Enable	( false );
 	m_ui_weapon_icon_rect		= m_ui_weapon_icon->GetWndRect();
 
-//	m_ui_armor_bar    = UIHelper::CreateProgressBar( xml, "progress_bar_armor", this );
 
 //	m_progress_self = xr_new<CUIProgressShape>();
 //	m_progress_self->SetAutoDelete(true);
@@ -252,7 +259,14 @@ void CUIHudStatesWnd::UpdateHealth( CActor* actor )
 		m_ui_stamina_bar->m_UIProgressItem.ResetColorAnimation();
 	}
 
-/*
+	float cur_satiety = actor->conditions().GetSatiety();
+	m_ui_satiety_bar->SetProgressPos(iCeil(cur_satiety * 100.0f * 35.f) / 35.f);
+	if (_abs(cur_satiety - m_last_satiety) > m_satiety_blink)
+	{
+		m_last_satiety = cur_satiety;
+		m_ui_satiety_bar->m_UIProgressItem.ResetColorAnimation();
+	}
+
 	CCustomOutfit* outfit = actor->GetOutfit();
 	if ( outfit )
 	{
@@ -265,7 +279,7 @@ void CUIHudStatesWnd::UpdateHealth( CActor* actor )
 		m_static_armor->Show( false );
 		m_ui_armor_bar->Show( false );
 	}
-*/	
+	
 	/*
 	float bleeding_speed = actor->conditions().BleedingSpeed();
 	if(bleeding_speed > 0.01f)

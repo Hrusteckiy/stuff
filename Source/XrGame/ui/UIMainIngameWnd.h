@@ -4,6 +4,7 @@
 #include "../hudsound.h"
 #include "../../xrServerEntities/alife_space.h"
 #include "../EntityCondition.h"
+#include "UIArtefactPanel.h"
 
 class	CUIPdaMsgListItem;
 class	CLAItem;
@@ -14,6 +15,7 @@ class	CMissile;
 class	CInventoryItem;
 class	CUIHudStatesWnd;
 class	CUIMotionIcon;
+class   UIArtefactPanel;
 
 class CUIMainIngameWnd: public CUIWindow  
 {
@@ -53,6 +55,9 @@ public:
 	CUIStatic*			m_ind_boost_power;
 	CUIStatic*			m_ind_boost_rad;
 
+    xr_vector<CUIStatic* > m_bordericon;
+	CUITextWnd* m_border;
+	CUIArtefactPanel* UIArtefactPanel;
 public:
 		void			ShowZoneMap(bool status);
 		void			DrawZoneMap();

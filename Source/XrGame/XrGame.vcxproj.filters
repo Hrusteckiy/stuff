@@ -6792,6 +6792,9 @@
     <ClInclude Include="ui\UICarPanel.h">
       <Filter>UI\Common\MainIngame</Filter>
     </ClInclude>
+	<ClInclude Include="ui\UIArtefactPanel.h">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClInclude>
     <ClInclude Include="ui\UIHudStatesWnd.h">
       <Filter>UI\Common\MainIngame</Filter>
     </ClInclude>
@@ -10386,6 +10389,9 @@
       <Filter>UI\Common\TALK</Filter>
     </ClCompile>
     <ClCompile Include="ui\UICarPanel.cpp">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClCompile>
+	<ClCompile Include="ui\UIArtefactPanel.cpp">
       <Filter>UI\Common\MainIngame</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIHudStatesWnd.cpp">

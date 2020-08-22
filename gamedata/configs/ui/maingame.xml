@@ -87,6 +87,14 @@
 	</flashing_icons>
 
 	<pick_up_item x="437" y="400" width="150" height="100"/>
+	
+	<artefact_panel x="1000" y="1000" width="1" height="1" cell_width="1" cell_height="1" scale="0.75"/>
+	<border x="314" y="660" width="362" height="40">
+	    <counter x="1" y="1" width="50" height="50">
+			<window_name>counter</window_name>
+	        <texture a="200">ui_border</texture>
+	        </counter>
+    </border>
 
 	<new_contact_snd>detectors\contact_1</new_contact_snd>
 
@@ -171,22 +179,51 @@
 		<indik_psi x="120" y="230" width="37" height="33"/>
 		<indik_acid x="165" y="230" width="37" height="33"/>
 
-		<back x="795" y="635" width="266" height="121">
+		<!--original thing<back x="795" y="635" width="266" height="121">-->
+		<back x="1000" y="1000" width="266" height="121">
 			<texture>ui_inGame2_Patroni_HUD_main_window</texture>
 		</back>
-		<progress_bar_health x="852" y="649" width="138" height="16" horz="1" min="0" max="100" pos="0">
-			<progress><!-- light_anim="ui_blinking_1" la_cyclic="0" la_texture="1" la_text="0" la_alpha="1"-->
-				<texture>ui_inGame2_Patroni_HUD_red_bar</texture>
-			</progress>
-		</progress_bar_health>
+		
 
-	    <progress_bar_stamina x="852" y="672" width="138" height="10" horz="1" min="0" max="100" pos="0">
+		<!--original thing		<progress_bar_health x="852" y="649" width="138" height="16" horz="1" min="0" max="100" pos="0">--> 
+<progress_bar_health x="320" y="644" width="140" height="16" horz="1" min="0" max="100" pos="0">
+			<progress><!-- light_anim="ui_blinking_1" la_cyclic="0" la_texture="1" la_text="0" la_alpha="1"-->
+<!--original thing					<texture>ui_inGame2_Patroni_HUD_red_bar</texture>-->
+<texture>ui_hp_bar</texture>
+			</progress>
+		</progress_bar_health>"
+
+<static_armor x="1000" y="1000" width="155" height="34">
+		<texture>ui_hud_shkala_armor</texture>		
+		<auto_static x="5" y="6" width="19" height="18">
+			<texture>ui_hud_icon_armour</texture>
+		</auto_static>
+	</static_armor>
+	
+	<progress_bar_armor x="537" y="625" width="142" height="20" horz="1" min="0" max="100" pos="0">
+		<progress>
+			<texture>ui_armor_bar</texture>
+		</progress>
+	</progress_bar_armor>
+	
+	<progress_bar_satiety x="320" y="624" width="142" height="18" horz="1" min="0" max="100" pos="0">
+		<progress>
+			<texture>ui_progress_bar_satiety</texture>
+		</progress>
+	</progress_bar_satiety>
+	
+<!--original thing		    <progress_bar_stamina x="852" y="672" width="138" height="10" horz="1" min="0" max="100" pos="0">-->
+<progress_bar_stamina x="537" y="650" width="138" height="10" horz="1" min="0" max="100" pos="0">
 	        <progress><!-- light_anim="ui_blinking_1" la_cyclic="0" la_texture="1" la_text="0" la_alpha="1"-->
-		        <texture>ui_inGame2_Patroni_HUD_blue_bar</texture>
+<!--original thing		        <texture>ui_inGame2_Patroni_HUD_blue_bar</texture>-->
+<texture>ui_stamina_bar</texture>
 	        </progress>
 	    </progress_bar_stamina>
 
-		<static_cur_ammo x="852" y="690" width="68" height="37">
+<panel_1 x="360" y="665" width="108" height="37">
+		<text complex_mode="0" font="graffiti32" color="ui_7" align="c" vert_align="c">soon panel, bruh</text>
+</panel_1>
+<!-- original thing		<static_cur_ammo x="852" y="690" width="68" height="37">
 			<text complex_mode="0" font="graffiti32" color="ui_7" align="c" vert_align="c">ammo</text>
 		</static_cur_ammo>
 
@@ -208,6 +245,33 @@
 	    <static_fire_mode x="824" y="723" width="18" height="19">
 	        <text font="letterica16" color="ui_7" align="c" vert_align="c"/>
 	    </static_fire_mode>
-	</hud_states>
+	</hud_states>-->
+		<static_cur_ammo x="1000" y="1000" width="68" height="37">
+			<text complex_mode="0" font="graffiti32" color="ui_7" align="c" vert_align="c">ammo</text>
+		</static_cur_ammo>
 
+	    <static_fmj_ammo x="1000" y="1000" width="32" height="15">
+	        <text align="c" complex_mode="0" font="graffiti19" color="ui_7">fmj</text>
+	    </static_fmj_ammo>
+
+	    <static_ap_ammo x="1000" y="1000" width="32" height="15">
+	        <text align="c" complex_mode="0" font="graffiti19" r="238" g="155" b="23" a="150">ap</text>
+	    </static_ap_ammo>
+
+	    <static_grenade x="1000" y="1000" width="18" height="19">
+	        <text align="c" complex_mode="0" font="letterica16" color="ui_7" vert_align="c">gr</text>
+	    </static_grenade>
+
+
+		<static_wpn_icon x="1000" y="1000" width="30" height="30" align="c" alignment="c"/>
+
+	    <static_fire_mode x="1000" y="1000" width="18" height="19">
+	        <text font="letterica16" color="ui_7" align="c" vert_align="c"/>
+	    </static_fire_mode>
+		
+<!--thing from SHOC-->		<static_wpn_icon x="0" y="13" width="80" height="42">
+		<text font="graffiti19" r="239" g="154" b="29" a="230"/>
+	</static_wpn_icon><!--thing from SHOC-->
+	
+	</hud_states>
 </w>
