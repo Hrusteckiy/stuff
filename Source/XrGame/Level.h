@@ -198,6 +198,7 @@ private:
 
 public:
 	void						PrefetchSound (LPCSTR name);
+	void						SetGameTime(u32 new_hours, u32 new_mins);
 
 protected:
 	BOOL						net_start_result_total;

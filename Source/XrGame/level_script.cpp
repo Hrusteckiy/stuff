@@ -115,6 +115,21 @@ void set_weather	(LPCSTR weather_name, bool forced)
 		g_pGamePersistent->Environment().SetWeather(weather_name,forced);
 }
 
+void set_game_time(u32 new_hours, u32 new_mins)
+{
+	Level().SetGameTime(new_hours, new_mins);
+float time_factor = Level().GetGameTimeFactor();
+	u32 year = 1, month = 0, day = 0, hours = 0, mins = 0, secs = 0, milisecs = 0;
+	split_time(Level().GetGameTime(), year, month, day, hours, mins, secs, milisecs);
+	u64 new_time = generate_time(year,month,day,new_hours,new_mins,secs,milisecs);
+	game_sv_Single* server_game = smart_cast<game_sv_Single*>(Level().Server->game);  
+	game_cl_Single* client_game = smart_cast<game_cl_Single*>(Level().game);			 
+	server_game->SetGameTimeFactor(new_time, time_factor);
+	server_game->SetEnvironmentGameTimeFactor(new_time, time_factor);
+	client_game->SetEnvironmentGameTimeFactor(new_time, time_factor);
+	client_game->SetGameTimeFactor(new_time, time_factor);
+}
+
 bool set_weather_fx	(LPCSTR weather_name)
 {
 #ifdef INGAME_EDITOR

@@ -14,11 +14,11 @@ public :
 	virtual		ALife::_TIME_ID			GetStartGameTime		();
 	virtual		ALife::_TIME_ID			GetGameTime				();	
 	virtual		float					GetGameTimeFactor		();	
-	virtual		void					SetGameTimeFactor		(const float fTimeFactor);
+	virtual		void					SetGameTimeFactor		(u64 new_time, const float fTimeFactor);
 
 	virtual		ALife::_TIME_ID		GetEnvironmentGameTime		();
 	virtual		float				GetEnvironmentGameTimeFactor();
-	virtual		void				SetEnvironmentGameTimeFactor(const float fTimeFactor);
+	virtual		void				SetEnvironmentGameTimeFactor(u64 new_time, const float fTimeFactor);
 
 	void		OnDifficultyChanged		();
 };

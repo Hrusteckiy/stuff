@@ -211,14 +211,36 @@ ALife::_TIME_ID game_sv_Single::GetEnvironmentGameTime		()
 		return(inherited::GetGameTime());
 }
 
-float game_sv_Single::GetEnvironmentGameTimeFactor		()
+float game_sv_Single::GetEnvironmentGameTimeFactor()
 {
 	return(inherited::GetGameTimeFactor());
 }
 
-void game_sv_Single::SetEnvironmentGameTimeFactor		(const float fTimeFactor)
+void game_sv_Single::SetGameTimeFactor(ALife::_TIME_ID GameTime, const float fTimeFactor)
 {
-	return(inherited::SetGameTimeFactor(fTimeFactor));
+	if (ai().get_alife() && ai().alife().initialized())
+	{
+		alife().time_manager().set_game_time(GameTime);
+		alife().time_manager().set_time_factor(fTimeFactor);
+	}
+	else
+	{
+		inherited::SetGameTimeFactor(GameTime, fTimeFactor);
+	}
+}
+
+
+void game_sv_Single::SetEnvironmentGameTimeFactor(ALife::_TIME_ID GameTime, const float fTimeFactor)
+{
+	if (ai().get_alife() && ai().alife().initialized())
+	{
+		alife().time_manager().set_game_time(GameTime);
+		alife().time_manager().set_time_factor(fTimeFactor);
+	}
+	else
+	{
+		inherited::SetEnvironmentGameTimeFactor(GameTime, fTimeFactor);
+	}
 }
 
 bool game_sv_Single::change_level					(NET_Packet &net_packet, ClientID sender)
